@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&family=Roboto&display=swap');
+
+* {
+  font-family: 'Prompt', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size: 26px;
+}
+
+h1 {
+  font-size: 96px;
+}
+
+.app .search {
+  text-align: center;
+  padding: 25px 20px 20px;
+}
+
+.app input {
+  padding: 12px 24px;
+  font-size: 19px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255, 0.8);
+  background: rgba(255,255,255, 0.3);
+  color: white;
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: rgba(0,0,0,0.2);
+  color: white;
+}
+
+.app::before {
+  content: '';
+  background: url('./Background/main.jpg') no-repeat center center/cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.app-thunderstorm::before {
+  background: url('./Background/Thunderstorm.jpg') no-repeat center center/cover;
+}
+
+.app-drizzle::before {
+  background: url('./Background/Drizzle.jpg') no-repeat center center/cover;
+}
+
+.app-rain::before {
+  background: url('./Background/Rain.jpg') no-repeat center center/cover;
+}
+
+.app-snow::before {
+  background: url('./Background/Snow.jpg') no-repeat center center/cover;
+}
+
+.app-clear::before {
+  background: url('./Background/Clear.jpg') no-repeat center center/cover;
+}
+
+.app-clouds::before {
+  background: url('./Background/Cloud.jpg') no-repeat center center/cover;
+}
+
+.app-squall::before {
+  background: url('./Background/Squall.jpg') no-repeat center center/cover;
+}
+
+.app-tornado::before {
+  background: url('./Background/Tornado.jpg') no-repeat center center/cover;
+}
+
+.app-haze::before {
+  background: url('./Background/Haze.jpg') no-repeat center center/cover;
+}
+
+.app-fog::before {
+  background: url('./Background/Fog.jpg') no-repeat center center/cover;
+}
+
+.app-mist::before {
+  background: url('./Background/Mist.jpg') no-repeat center center/cover;
+}
+
+.container {
+  max-width: 700px;
+  height: 700px;
+  margin: auto;
+  padding: 0 16px;
+  position: relative;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app .top {
+  width: 100%;
+  margin: 16px auto;
+}
+
+.app .description {
+  position: relative;
+  float: right;
+  top: 30px;
+}
+
+.app .bottom {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: 16px auto;
+  padding: 25px;
+  border-radius: 25px;
+  background-color: rgba(255,255,255, 0.2);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.date p {
+  font-size: 23px;
+  padding: 5px;
+}
