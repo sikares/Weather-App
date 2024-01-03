@@ -48,8 +48,6 @@ function App() {
       setCity('')
     }
   }
-  // const tempCelsius = Math.round(data.main.temp - 273.15);
-  // const feelsLikeCelsius = Math.round(data.main.feels_like - 273.15);
 
   return (
     <div className={`app ${data.weather && `app-${data.weather[0].main.toLowerCase()}`}`}>
@@ -70,7 +68,6 @@ function App() {
           <p style={{textTransform:'uppercase'}}><FaLocationDot style={{marginRight: '6px'}} />{data.name}</p>
           </div>
           <div className="temp">
-            {/* {data.main ? <h1>{Math.round(data.main.temp - 273.15)}°C</h1> : null} */}
             {data.main && <h1>{Math.round(data.main.temp - 273.15)}°C</h1>}
           </div>
           <div>
