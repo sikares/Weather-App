@@ -28,7 +28,7 @@ This weather app allows users to search for the current weather conditions of a 
 2. Get API key:
   Visit OpenWeatherMap and sign up to obtain an API key.
   Replace YOUR_API_KEY in App.js with your actual API key.
-3.Run the app:
+3. Run the app:
   ```bash
   npm start
 
