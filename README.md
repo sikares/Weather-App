@@ -35,4 +35,3 @@ This weather app allows users to search for the current weather conditions of a 
 ## Usage
 - Enter the location in the search bar and press Enter to get the current weather information.
 - The background image changes based on the weather condition.
-
