@@ -9,10 +9,10 @@ Check out the live demo: [Weather App](https://weather-app-by-hilly.netlify.app/
 This weather app allows users to search for the current weather conditions of a specific location. It offers a user-friendly interface, displaying essential weather metrics in a clear and concise manner. The app's background changes dynamically to reflect the current weather, enhancing the overall user experience.
 
 ## Technologies Used 🚀
-- React: A JavaScript library for building user interfaces.
-- Axios: A promise-based HTTP client for making requests to the OpenWeatherMap API.
-- OpenWeatherMap API: Provides real-time weather data and forecasts.
-- React Icons: A library of customizable SVG icons for React.
+- **React:** A JavaScript library for building user interfaces.
+- **Axios:** A promise-based HTTP client for making requests to the OpenWeatherMap API.
+- **OpenWeatherMap API:** Provides real-time weather data and forecasts.
+- **React Icons:** A library of customizable SVG icons for React.
 
 ## Installation 📥
 1. Clone the repository:
