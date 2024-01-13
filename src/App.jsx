@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from 'axios';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaTemperatureHigh } from "react-icons/fa";
 import { TiWeatherCloudy } from "react-icons/ti";
@@ -9,8 +9,8 @@ import { WiTime5 } from "react-icons/wi";
 import { MdCalendarToday } from "react-icons/md";
 
 function App() {
-  const [data,setData] = useState({})
-  const [city, setCity] = useState('')
+  const [data, setData] = useState({});
+  const [city, setCity] = useState('');
   const [currentTime, setCurrentTime] = useState(new Date());
 
   const dateBuilder = (d) => {
@@ -41,21 +41,20 @@ function App() {
   const searchCity = (event) => {
     if (event.key === 'Enter') {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=04de853989ac60cfe02d5a81b9971bad`)
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
-        
-        axios.get(`https://restcountries.com/v2/alpha/${res.data.sys.country}`)
-          .then((countryRes) => {
-            setData(prevData => ({ ...prevData, country: countryRes.data.name }));
-          })
-          .catch((error) => {
-            console.error('Error fetching country data', error);
-          });
-      })
-      .catch((error) => {
-        console.error('Error fetching weather data', error);
-      });
+        .then((res) => {
+          setData(res.data);
+
+          axios.get(`https://restcountries.com/v2/alpha/${res.data.sys.country}`)
+            .then((countryRes) => {
+              setData(prevData => ({ ...prevData, country: countryRes.data.name }));
+            })
+            .catch((error) => {
+              console.error('Error fetching country data', error);
+            });
+        })
+        .catch((error) => {
+          console.error('Error fetching weather data', error);
+        });
       setCity('');
     }
   };
@@ -63,52 +62,78 @@ function App() {
   return (
     <div className={`app ${data.weather && `app-${data.weather[0].main.toLowerCase()}`}`}>
       <div className="search">
-        <input type="text" value={city}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            searchCity(event);
-          }
-        }}
-        onChange={event => setCity(event.target.value.toUpperCase())}
-        placeholder="Search Location"/>
-      </div>
-      {data.main !== undefined &&
-      <div className="container">
-        <div className="top">
-          <div className="location">
-          <p style={{ textTransform: 'uppercase' }}><FaLocationDot style={{ marginRight: '6px' }} />{data.name}{`, ${data.country}`}</p>
-          </div>
-          <div className="temp">
-            {data.main && <h1>{Math.round(data.main.temp - 273.15)}°C</h1>}
-          </div>
-          <div>
-            {data.main && 
-              <div className="date">
-                <p><MdCalendarToday style={{verticalAlign: 'text-bottom', marginRight: '8px', fontSize: '26px'}}/>{dateBuilder(new Date())}</p>
-                <p><WiTime5 style={{verticalAlign: 'text-bottom', marginRight: '6px', fontSize: '28px'}}/>{currentTime.toLocaleTimeString()}</p>
-              </div>
+        <input
+          type="text"
+          value={city}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              searchCity(event);
             }
-          </div>
-          <div className="description">
-            {data.main && <p style={{ textTransform:'uppercase'}}><TiWeatherCloudy style={{verticalAlign: 'text-bottom', marginRight: '6px', fontSize: '35px'}}/>{data.weather[0].main}</p>}
-          </div>
-        </div>
-          <div className="bottom">
-          <div className="feels">
-            {data.main && <p className="bold">{Math.round(data.main.feels_like - 273.15)}°C</p>}
-            <p><FaTemperatureHigh style={{marginRight: '8px'}}/>Feels Like</p>
-          </div>
-          <div className="humidity">
-            {data.main && <p className="bold">{data.main.humidity}%</p>}
-            <p><IoIosWater style={{marginRight: '5px'}}/>Humidity</p>
-          </div>
-          <div className="wind">
-            {data.main && <p className="bold">{data.wind.speed} m/s</p>}
-            <p><FiWind style={{marginRight: '9px'}}/>Wind Speed</p>
-          </div>
-        </div>
+          }}
+          onChange={event => setCity(event.target.value.toUpperCase())}
+          placeholder="Search Location"
+        />
       </div>
-      }
+      {data.main !== undefined && (
+        <div className="container">
+          <div className="top">
+            <div className="location">
+              <p style={{ textTransform: 'uppercase' }}>
+                <FaLocationDot style={{ marginRight: '6px' }} />
+                {data.name}{`, ${data.country}`}
+              </p>
+            </div>
+            <div className="temp">
+              {data.main && <h1>{Math.round(data.main.temp - 273.15)}°C</h1>}
+            </div>
+            <div>
+              {data.main && (
+                <div className="date">
+                  <p>
+                    <MdCalendarToday style={{ verticalAlign: 'text-bottom', marginRight: '8px', fontSize: '26px' }} />
+                    {dateBuilder(new Date())}
+                  </p>
+                  <p>
+                    <WiTime5 style={{ verticalAlign: 'text-bottom', marginRight: '6px', fontSize: '28px' }} />
+                    {currentTime.toLocaleTimeString()}
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="description">
+              {data.main && (
+                <p style={{ textTransform: 'uppercase' }}>
+                  <TiWeatherCloudy style={{ verticalAlign: 'text-bottom', marginRight: '6px', fontSize: '35px' }} />
+                  {data.weather[0].main}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="bottom">
+            <div className="feels">
+              {data.main && <p className="bold">{Math.round(data.main.feels_like - 273.15)}°C</p>}
+              <p>
+                <FaTemperatureHigh style={{ marginRight: '8px' }} />
+                Feels Like
+              </p>
+            </div>
+            <div className="humidity">
+              {data.main && <p className="bold">{data.main.humidity}%</p>}
+              <p>
+                <IoIosWater style={{ marginRight: '5px' }} />
+                Humidity
+              </p>
+            </div>
+            <div className="wind">
+              {data.main && <p className="bold">{data.wind.speed} m/s</p>}
+              <p>
+                <FiWind style={{ marginRight: '9px' }} />
+                Wind Speed
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
