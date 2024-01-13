@@ -42,12 +42,23 @@ function App() {
     if (event.key === 'Enter') {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=04de853989ac60cfe02d5a81b9971bad`)
       .then((res) => {
-        setData(res.data)
+        setData(res.data);
         console.log(res.data);
+        
+        axios.get(`https://restcountries.com/v2/alpha/${res.data.sys.country}`)
+          .then((countryRes) => {
+            setData(prevData => ({ ...prevData, country: countryRes.data.name }));
+          })
+          .catch((error) => {
+            console.error('Error fetching country data', error);
+          });
       })
-      setCity('')
+      .catch((error) => {
+        console.error('Error fetching weather data', error);
+      });
+      setCity('');
     }
-  }
+  };
 
   return (
     <div className={`app ${data.weather && `app-${data.weather[0].main.toLowerCase()}`}`}>
@@ -65,7 +76,7 @@ function App() {
       <div className="container">
         <div className="top">
           <div className="location">
-          <p style={{textTransform:'uppercase'}}><FaLocationDot style={{marginRight: '6px'}} />{data.name}</p>
+          <p style={{ textTransform: 'uppercase' }}><FaLocationDot style={{ marginRight: '6px' }} />{data.name}{`, ${data.country}`}</p>
           </div>
           <div className="temp">
             {data.main && <h1>{Math.round(data.main.temp - 273.15)}°C</h1>}
