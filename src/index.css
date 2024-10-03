@@ -343,7 +343,7 @@ h1 {
   }
 
   .location p {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   h1 {
@@ -352,6 +352,11 @@ h1 {
 
   .app .temp h1 {
     font-size: 56px;
+  }
+
+  .app .top {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   p {
@@ -371,7 +376,6 @@ h1 {
   }
 
   .app .description p {
-    margin-top: 20px;
     font-size: 22px;
   }
 
