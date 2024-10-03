@@ -1,37 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt&family=Roboto&display=swap');
 
-@media only screen and (max-width: 768px) {
-  .container {
-    height: 100vh;
-    margin-top: 0;
-  }
-
-  .app {
-    margin: 0;
-  }
-
-  .app .search input {
-    margin-top: 20px;
-  }
-
-  .app .bottom {
-    flex-direction: column;
-  }
-
-  .app .bottom > div {
-    margin-bottom: 20px;
-  }
-
-  .app .description {
-    float: none;
-    top: 0;
-    text-align: center;
-  }
-}
-
 * {
-  font-family: 'Prompt', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Prompt', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -57,6 +27,7 @@ h1 {
 .app .search {
   text-align: center;
   padding: 25px 20px 20px;
+  width: 500px;
 }
 
 .search input {
@@ -67,10 +38,17 @@ h1 {
   padding: 12px 24px;
   font-size: 19px;
   border-radius: 25px;
-  border: 1px solid rgba(255,255,255, 0.8);
-  background: rgba(255,255,255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
   color: white;
   outline: none;
+  width: 80%;
+  max-width: 400px;
+  transition: background 0.3s, border 0.3s;
+}
+
+.search input:focus {
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 ::placeholder {
@@ -81,87 +59,131 @@ h1 {
   width: 100%;
   height: 100vh;
   position: relative;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .app::before {
   content: '';
-  background: url('/public/Background/main.jpg') no-repeat center center/cover;
+  background: url('/public/Images/main.jpg') no-repeat center center/cover;
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   z-index: -1;
+  pointer-events: none;
 }
 
 .app-thunderstorm::before {
-  background: url('/public/Background/Thunderstorm.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Thunderstorm.jpg') no-repeat center center/cover;
 }
 
 .app-drizzle::before {
-  background: url('/public/Background/Drizzle.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Drizzle.jpg') no-repeat center center/cover;
 }
 
 .app-rain::before {
-  background: url('/public/Background/Rain.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Rain.jpg') no-repeat center center/cover;
 }
 
 .app-snow::before {
-  background: url('/public/Background/Snow.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Snow.jpg') no-repeat center center/cover;
 }
 
 .app-clear::before {
-  background: url('/public/Background/Clear.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Clear.jpg') no-repeat center center/cover;
 }
 
 .app-clouds::before {
-  background: url('/public/Background/Clouds.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Clouds.jpg') no-repeat center center/cover;
 }
 
 .app-squall::before {
-  background: url('/public/Background/Squall.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Squall.jpg') no-repeat center center/cover;
 }
 
 .app-tornado::before {
-  background: url('/public/Background/Tornado.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Tornado.jpg') no-repeat center center/cover;
 }
 
 .app-haze::before {
-  background: url('/public/Background/Haze.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Haze.jpg') no-repeat center center/cover;
 }
 
 .app-fog::before {
-  background: url('/public/Background/Fog.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Fog.jpg') no-repeat center center/cover;
 }
 
 .app-mist::before {
-  background: url('/public/Background/Mist.jpg') no-repeat center center/cover;
+  background: url('/public/Images/Mist.jpg') no-repeat center center/cover;
 }
-
 .container {
-  max-width: 700px;
+  max-width: 800px;
   height: 700px;
-  margin: auto;
   padding: 0 16px;
   position: relative;
   top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 25px;
 }
 
 .app .top {
   width: 100%;
-  margin: 16px auto;
+  margin: 56px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .app .description {
   position: relative;
   float: right;
   top: 30px;
+}
+
+.app .description p {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.app .description p svg {
+  margin-right: 6px;
+  font-size: 35px;
+}
+
+.app .temp {
+  margin: 10px 0;
+}
+
+.app .temp h1 {
+  font-size: 96px;
+  margin: 0;
+}
+
+.app .date {
+  margin-top: 15px;
+}
+
+.app .date p {
+  font-size: 23px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.app .date p svg {
+  margin-right: 8px;
+  font-size: 26px;
 }
 
 .app .bottom {
@@ -172,14 +194,188 @@ h1 {
   margin: 16px auto;
   padding: 22px;
   border-radius: 25px;
-  background-color: rgba(255,255,255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
+}
+
+.app .bottom > div {
+  flex: 1 1 30%;
+  margin: 10px;
 }
 
 .bold {
   font-weight: 700;
+  font-size: 26px;
 }
 
-.date p {
-  font-size: 23px;
-  padding: 5px;
+.bottom p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom p svg {
+  margin-right: 8px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    max-width: 600px;
+    padding: 20px;
+    padding-bottom: 5px;
+    top: 10%;
+  }
+
+  h1 {
+    font-size: 80px;
+  }
+
+  .app .temp h1 {
+    font-size: 80px;
+  }
+
+  .bold {
+    font-size: 24px;
+  }
+
+  .app .search {
+    width: 450px;
+  }
+
+  .app .description p {
+    font-size: 24px;
+  }
+
+  .app .description p svg {
+    font-size: 32px;
+  }
+
+  .app .date p {
+    font-size: 20px;
+  }
+
+  .app .date p svg {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    height: auto;
+    width: 400px;
+    padding: 16px;
+    padding-bottom: 0px;
+    top: 5%;
+  }
+
+  .app {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .app .search input {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .app .bottom {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .app .bottom > div {
+    flex: 1 1 auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+  .app .description {
+    float: none;
+    top: 15px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .app .temp h1 {
+    font-size: 64px;
+  }
+
+  .app .description p {
+    font-size: 22px;
+  }
+
+  .app .description p svg {
+    font-size: 24px;
+  }
+
+  .app .date p {
+    font-size: 19px;
+  }
+
+  .app .date p svg {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 64px;
+  }
+
+  .bold {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    height: auto;
+    width: 350px;
+    margin-top: 0;
+    padding: 16px;
+    padding-bottom: 0px;
+    top: 5%;
+  }
+
+  .location p {
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  .app .temp h1 {
+    font-size: 56px;
+  }
+
+  p {
+    font-size: 19px;
+  }
+
+  .bold {
+    font-size: 21px;
+  }
+
+  .search input {
+    font-size: 16px;
+  }
+
+  .bottom p svg {
+    margin-right: 5px;
+  }
+
+  .app .description p {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+
+  .app .description p svg {
+    font-size: 24px;
+  }
 }
